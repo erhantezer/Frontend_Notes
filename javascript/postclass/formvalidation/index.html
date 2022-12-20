@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css"
+      integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+      crossorigin="anonymous"
+    />
+  </head>
+  <style>
+
+    body{
+        background-color: #F1F3F4;
+    }
+    .bgStyle{
+        background-color:#DDF4ED;
+        padding: 2rem;
+        border: 1px solid black;
+        border-radius: 10px;
+    }
+    .width{
+        width: 400px;
+    }
+  </style>
+  <body>
+    <h2 class="container w-50 h-50  mt-3 text-center  shadow-lg">
+      Form Validation
+    </h2>
+
+    <div class="form-group container bgStyle">
+      <label for="username">UserName:</label>
+      <input type="text" class="form-control" id="username"/>
+      <label for="email">Email:</label>
+      <input type="email" class="form-control" id="email"/>
+    </div>
+    <div class="text-center">
+      <button type="button" class="btn btn-success mb-3" onclick="validateform()">
+        Click
+      </button>
+    </div>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa nam eligendi deserunt labore optio, quae fugiat dolores, error amet quidem consequatur porro quam, repellendus dignissimos a animi neque? Quae explicabo id cupiditate veniam. Doloribus eos, sit distinctio, necessitatibus incidunt commodi quibusdam ipsam qui, ut laborum ipsum debitis maiores dolore expedita? Lorem ipsum dolor sit amet consectetur adipisicing elit. Maiores corrupti ad adipisci nam, perspiciatis voluptatum quaerat, odit placeat nesciunt quas minima recusandae quos? Recusandae inventore similique vero exercitationem assumenda error debiti</p>
+
+    <div aria-live="polite" aria-atomic="true" style="position: absolute; min-height: 200px;">
+        <div class="toast bg-danger" id="myToast" style="position: fixed; top:0; right:5px; z-index:1000" role="alert" aria-live="assertive" aria-atomic="true" data-delay="2000">
+            <div class="toast-header">
+             
+              <strong class="mr-auto">Bootstrap</strong>
+              <small class="text-muted">11 mins ago</small>
+              <button type="button" class="ml-2 mb-1 close" data-dismiss="toast" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="toast-body">
+              Hello, world! This is a toast message.
+            </div>
+          </div>
+    </div>
+   
+
+    <div id="result" style="display: none"></div>
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+  </body>
+
+  <script>
+    function validateform() {
+      let
+        valueInput,
+        message  =""
+        let regex = /^[^\d][\w]{5,}$/;
+
+        console.log(regex.test("AAAAA"));
+        
+        let myToast =document.getElementById("myToast")
+        let  toast =new bootstrap.Toast(myToast)
+        toast.show()
+
+        let toastBody =document.querySelector(".toast-body")
+
+        valueInput=document.querySelector("#username").value;
+
+        const formContainer=document.querySelector(".bgStyle").classList.toggle("width")
+        if(valueInput==""){
+
+            toastBody.style.color="white"
+            toastBody.innerHTML="Kullanıcı adı boş bırakılamaz!!!"
+            valueInput=""
+
+
+        }
+        else if(!isNaN(valueInput)){
+            toastBody.innerHTML="Lütfen kullanıcı adınıza rakam girmeyiniz!!!"
+            valueInput=""
+
+        }else if (regex.test(valueInput)==false){
+            console.log("Regex çalıştı mı?");
+
+            toastBody.innerHTML="Kullanıcı adı sayısal ifade içermemeli ve en az 6 karakter içermelidir"
+            valueInput=""
+
+        }
+        else{
+            toastBody.innerHTML="Kullanıcı adı gönderildi!!!"
+            valueInput=""
+        }
+      
+        valueInput=""
+      
+    }
+  </script>
+  
+
+</html>

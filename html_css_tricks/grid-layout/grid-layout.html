@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Grid-Layout</title>
+
+</head>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    body {
+        height: 100vh;
+        display: grid;
+        grid-template: auto 1fr auto / auto 1fr auto;
+    }
+
+    header {
+        background-color: blueviolet;
+        grid-column: 1 / span 3;
+        text-align: center;
+        font-size: 1.5rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+
+    }
+
+    aside {
+        background-color: aqua;
+        text-align: center;
+        font-size: 1.5rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+    }
+
+    main {
+        background-color: burlywood;
+        text-align: center;
+        font-size: 1.5rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+    }
+
+    footer {
+        background-color: lime;
+        text-align: center;
+        font-size: 1.5rem;
+        grid-column: 1 / span 3;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+    }
+</style>
+
+<body>
+    <header>
+        Header
+    </header>
+    <aside>
+        left sidebar
+    </aside>
+    <main>
+        Main Content
+    </main>
+    <aside>
+        Rigth sidebar
+    </aside>
+    <footer>
+        Footer
+    </footer>
+
+</body>
+
+</html>

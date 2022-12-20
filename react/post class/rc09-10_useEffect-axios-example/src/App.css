@@ -1,0 +1,9 @@
+.cursor-pointer {
+  cursor: pointer;
+}
+.App{
+  background-color: #58B5D8;
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+}

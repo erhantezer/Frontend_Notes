@@ -1,0 +1,223 @@
+:root{
+    --primary-color:rgba(13,110,139,0.75);
+    --overlay-color:rgba(24,3951,0.85);
+    --menu-speed:.75s;
+}
+
+*{
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+
+}
+body{
+    font-family: "Roboto",sans-serif;
+    line-height: 1.4;
+}
+.container{
+    max-width: 960px;
+    margin: auto;
+    overflow: hidden;
+    padding: 0 3rem;
+}
+.showcase{
+    background-color: var(--primary-color);
+    color: #fff;
+    height:100vh ;
+    position: relative;
+}
+.showcase::before{
+  content: "";
+  background: url("https://picsum.photos/id/514/600/400") no-repeat center center/cover;
+  
+    position: absolute;
+    top:0;
+    left:0;
+    width: 100%;
+    height: 100%;
+    z-index:-1;
+
+}
+
+.showcase .showcase-inner{
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   justify-content: center;
+   text-align: center;
+   height: 100%;
+   opacity: .5;
+}
+.showcase h1{
+    font-size: 4rem;
+}
+.showcase p{
+    font-size: 1.3rem;
+}
+
+
+
+.menu-wrap{
+    position: fixed;
+    top:0;
+    left:0;
+    z-index: 1;
+
+}
+.menu-wrap .toggler{
+    position: absolute;
+    top:0;
+    left: 0;
+    z-index: 2;
+    width: 50px;
+    height: 50px;
+    opacity: 0;
+    border: 1px solid black;
+    
+}
+.menu-wrap .hamburger{
+    /* border: 1px solid red; */
+    position: absolute;
+    width: 60px;
+    height: 60px;
+    padding: 1rem;
+    z-index: 1;
+    background:var(--primary-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Hamburger Line */
+.menu-wrap .hamburger > div{
+    position: relative;
+    width: 100%;
+    height: 2px;
+    background-color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.9s;
+
+
+}
+.menu-wrap .hamburger > div:before{
+    content: "";
+    position: absolute;
+    top: -10px;
+    z-index: 1;
+    width: 100%;
+    height: 2px;
+    background-color: #fff;
+}
+
+/* Moves line down*/
+.menu-wrap .hamburger > div:after{
+    content: "";
+    position: absolute;
+    top: 10px;
+    z-index: 1;
+    width: 100%;
+    height: 2px;
+    background-color: #fff;
+}
+
+/* Toogler animate */
+
+.menu-wrap .toggler:checked + .hamburger > div{
+    transform: rotate(135deg);
+}
+
+/* Turn lines into X */
+.menu-wrap .toggler:checked + .hamburger > div:after,
+.menu-wrap .toggler:checked + .hamburger > div:before
+{
+    top:0;
+    transform: rotate(90deg);
+}
+/* Rotate on hover whwn checked */
+.menu-wrap .toggler:checked:hover + .hamburger > div{
+    transform: rotate(225deg);
+
+}
+
+/* Show menu */
+.menu-wrap .toggler:checked ~ .menu{
+    visibility: visible;
+}
+.menu-wrap .toggler:checked ~ .menu >div{
+    transform: scale(1);
+    transition-duration: var(--menu-speed);
+}
+.menu-wrap .toggler:checked ~ .menu > div> div{
+    opacity: 1;
+    transition: opacity .4s ease;
+}
+
+.menu-wrap .menu{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    /* height: 100%; */
+    visibility: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.menu-wrap .menu > div{
+    /* background: var(--overlay-color); */
+    border-radius: 50%;
+    width: 200vw;
+    display: flex;
+    flex:none;
+    align-items: center;
+    justify-content: center;
+    transition: all .4s ease;
+}
+.menu-wrap .menu > div > div{
+    text-align: center;
+    max-width: 90vw;
+    max-height: 100vh;
+    transition: opacity .4s ease;
+}
+.menu-wrap .menu > div > div >ul >li{
+    list-style: none;
+    color: #fff;
+    font-size: 1.5rem;
+    padding: 1rem;
+}
+.menu-wrap .menu > div > div >ul >li>a{
+    color:#79093c;
+    text-decoration: none;
+    transition: color .4s ease;
+}
+
+
+
+li {
+    
+    position: relative;
+}
+
+li::after {
+    position: absolute;
+    left: 50%;
+    bottom: 10px;
+    content: "";
+    width: 0%;
+    height: 4px;
+    background-color: black;
+    transition: all .3s ease-in-out;
+
+}
+
+li:hover {
+    cursor: pointer;
+}
+
+li:hover::after {
+    width: 100%;
+    left: 0%;
+
+}

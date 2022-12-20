@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+        integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>Document</title>
+    <style>
+        ul {
+            list-style: none;
+        }
+
+        li {
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+            border: 1px solid red;
+            background-color: aqua;
+        }
+
+        .ciz {
+            text-decoration: line-through;
+
+        }
+
+        .header {
+            text-align: center;
+        }
+
+        #input {
+            width: 50%;
+            padding: 8px 0px;
+            outline: none;
+            border-radius: 10px;
+            text-align: center;
+            font-size: 1rem;
+        }
+
+        span {
+            background-color: red;
+            padding: 8px 8px;
+            color: white;
+            border-radius: 10px;
+        }
+    </style>
+
+
+</head>
+
+<body>
+    <div class="header">
+        <input id="input" type="text">
+        <span class="addBtn">EKLE</span>
+
+    </div>
+    <ul class="tasks">
+
+    </ul>
+
+    <h1>atam izindeyiz</h1>
+
+</body>
+
+
+
+
+
+
+<script>
+    const ul = document.querySelector(".tasks");
+    const h1 = document.querySelector("h1");
+    let input = document.querySelector("#input")
+    let addBtn = document.querySelector(".addBtn");
+
+    let span = document.createElement("span");
+    let text = document.createTextNode("\u00D7");
+    span.appendChild(text)
+
+    h1.appendChild(span);
+
+
+
+
+    ul.addEventListener("click", (event) => {
+        //console.log(event.target)
+        if (event.target.classList.contains("fa-trash-can")) {
+            event.target.closest(".taks").remove();
+
+        } else if (event.target.classList.contains("fa-check")) {
+            event.target.nextElementSibling.classList.toggle("ciz");
+
+
+        }
+
+
+    })
+
+
+
+
+    input.onkeydown = function (e) {
+
+        if (e.code == "Enter") {
+            addBtn.click();
+        }
+
+    }
+
+    ul.onkeydown = function (e) {
+
+        if (e.code == "Delete") {
+            event.target.closest(".taks").remove();
+        }
+
+    }
+
+    //* ==============================================
+
+    addBtn.onclick = function () {
+
+
+        if (input.value == "") {
+            console.log("öğe gir")
+            input.value = ""
+        } else {
+
+            document.querySelector("ul").innerHTML += `
+    <li class="taks"><i class="fa-solid fa-check fa-2x"></i>
+    <p>${input.value}</p>
+    <i class="fa-solid fa-trash-can fa-lg"></i></li>`
+
+            input.value = ""
+
+        }
+    }
+</script>
+
+</html>
